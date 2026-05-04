@@ -1,0 +1,336 @@
+/* Structura de Bază */
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoText {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.iconBtn, .exitBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+}
+
+/* Stepper (liniile de progres) */
+.stepperContainer {
+  padding: 20px;
+}
+
+.stepper {
+  display: flex;
+  gap: 10px;
+}
+
+.step {
+  height: 4px;
+  flex: 1;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.activeStep {
+  background-color: #C5A47E;
+}
+
+/* Main Content */
+.main {
+  padding: 20px;
+  flex: 1;
+}
+
+.title {
+  font-family: serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  color: #999;
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+}
+
+/* Calendar Card */
+.calendarCard {
+  border: 1px solid #e5d5c5;
+  border-radius: 24px;
+  padding: 24px;
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.currentMonth {
+  font-family: serif;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+}
+
+.navArrow {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.dayLabel {
+  color: #b5b5b5;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.dayButton {
+  background: none;
+  border: none;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.selectedDay {
+  background-color: #fdeef2 !important;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.todayHighlight {
+  background-color: #f9f4f0;
+}
+
+/* Butoane de jos */
+.buttonGroup {
+  display: flex;
+  gap: 15px;
+}
+
+.backButton {
+  flex: 1;
+  background: white;
+  border: 1px solid #e5d5c5;
+  padding: 16px;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.continueBtnSmall {
+  flex: 1;
+  background-color: #C5A47E;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Stiluri pentru Pasul 1 (Confirmare Serviciu) */
+.selectedServiceCard {
+  border: 1.5px solid #d4c4b5;
+  border-radius: 24px;
+  padding: 24px;
+  background-color: #fff;
+}
+
+.categoryTag {
+  color: #e5b9a3;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.serviceName {
+  font-size: 1.4rem;
+  margin: 12px 0 24px 0;
+  color: #2d2d2d;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.durationInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #777;
+}
+
+.priceTag {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #C5A47E;
+}
+
+.continueBtn {
+  width: 100%;
+  background-color: #C5A47E;
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 40px;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+/* Stil pentru zilele dezactivate (trecute) */
+.disabledDay {
+  color: #d1d1d1 !important; /* Text gri deschis */
+  cursor: not-allowed;        /* Cursor de tip "interzis" */
+  opacity: 0.5;               /* Mai transparent */
+  pointer-events: none;       /* Ignoră orice click */
+}
+
+/* Stil pentru ziua de azi (21) */
+.todayHighlight {
+  background-color: #f9f4f0; /* Crem deschis */
+  border: 1px solid #e5d5c5;
+  border-radius: 12px;
+}
+
+/* Asigură-te că butonul selectat rămâne vizibil peste gri */
+.selectedDay {
+  background-color: #fdeef2 !important;
+  color: #1a1a1a !important;
+  font-weight: 600;
+}
+
+/* Stil pentru butonul de continuare când e blocat */
+.continueBtnSmall:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Time Selection Styles */
+.timeSection {
+  margin-bottom: 30px;
+}
+
+.timeGroupLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #C5A47E;
+  font-weight: 600;
+  margin: 20px 0 12px 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timeGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.timeButton {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 12px 5px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.timeButton:hover {
+  border-color: #C5A47E;
+  background-color: #fffaf5;
+}
+
+.selectedTime {
+  background-color: #C5A47E !important;
+  color: white !important;
+  border-color: #C5A47E !important;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(197, 164, 126, 0.3);
+}
+
+/* Ajustare pentru ecrane mici la gridul de timp */
+@media (max-width: 380px) {
+  .timeGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.selectedDateBadge {
+  background-color: #fceef3; /* Rozul pal */
+  padding: 12px 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  color: #4a4a4a;
+  font-size: 1rem;
+}
+
+.calendarIconGold {
+  color: #c5a47e;
+}
+
+.centerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.successIconContainer {
+  background-color: #f9f4f0;
+  padding: 30px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}

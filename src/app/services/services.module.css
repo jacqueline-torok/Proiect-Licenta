@@ -1,0 +1,207 @@
+.container {
+  background-color: #fff;
+  min-height: 100vh;
+  padding-bottom: 80px; /* Spațiu pentru TabBar */
+  font-family: 'serif', sans-serif;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.exitBtn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hero {
+  background-color: #fce4ec; /* Rozul pal din imagine */
+  margin: 20px;
+  padding: 40px 20px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 2rem;
+  color: #2D2D2D;
+  margin-bottom: 10px;
+}
+
+.heroSubtitle {
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.content {
+  padding: 0 20px;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  margin: 20px 0;
+  color: #333;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.serviceCard {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #f5f5f5;
+}
+
+.imageContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.serviceDetails {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.category {
+  color: #C5A47E;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.serviceTitle {
+  font-size: 1.1rem;
+  margin: 5px 0;
+  color: #2D2D2D;
+}
+
+.meta {
+  display: flex;
+  gap: 15px;
+  color: #aaa;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.rating, .duration {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.price {
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  color: #C5A47E;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Bottom Tab Bar */
+.tabBar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid #eee;
+}
+
+.tabItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #888;
+  font-size: 0.75rem;
+  gap: 4px;
+}
+
+.activeTab {
+  background-color: #fdf0f4;
+  color: #d81b60;
+  padding: 8px 20px;
+  border-radius: 15px;
+}
+
+/* Containerul pentru preț și buton pentru a le alinia frumos */
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f5f5f5;
+}
+
+.price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Butonul Book restilizat */
+.selectBtnSmall {
+  background-color: #C5A47E; /* Auriul tău signature */
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(197, 164, 126, 0.2);
+}
+
+.selectBtnSmall:hover {
+  background-color: #b3936d; /* O nuanță mai intensă la hover */
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(197, 164, 126, 0.3);
+}
+
+/* Stil pentru butonul Exit */
+.exitBtn {
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.exitBtn:hover {
+  background-color: #f9f9f9;
+  border-color: #ccc;
+  color: #333;
+}
+

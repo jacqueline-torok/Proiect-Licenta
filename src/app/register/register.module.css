@@ -1,0 +1,265 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff5f7 0%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Secțiunea de Logo/Titlu de sus */
+.logoSection {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.logoBadge {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #d4a373 0%, #f7cad0 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(212, 163, 115, 0.2);
+  color: white;
+}
+
+.title {
+  font-size: 28px;
+  color: #333;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #8e8e8e;
+  font-size: 14px;
+}
+
+/* Cardul Alb Principal */
+.registerCard {
+  background: white;
+  width: 100%;
+  max-width: 440px;
+  padding: 40px;
+  border-radius: 40px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+}
+
+/* Bannerul Roz pentru Rewards */
+.rewardsBanner {
+  background-color: #fff1f2;
+  border: 1px solid #ffe4e6;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.rewardsIcon {
+  color: #d4a373;
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+.rewardsText h4 {
+  color: #d4a373;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.rewardsText p {
+  color: #a1a1a1;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Stiluri Formular */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #8e8e8e;
+  margin-left: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  background: #fffcfb;
+  border: 1px solid #f9f0ec;
+  border-radius: 16px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  border-color: #d4a373;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(212, 163, 115, 0.05);
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #c4c4c4;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.passwordHint {
+  font-size: 10px;
+  color: #b0b0b0;
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+/* Termeni și Condiții */
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 5px 0 10px 10px;
+}
+
+.checkbox {
+  margin-top: 3px;
+  accent-color: #d4a373;
+  width: 14px;
+  height: 14px;
+}
+
+.terms p {
+  font-size: 11px;
+  color: #8e8e8e;
+  line-height: 1.5;
+}
+
+.terms span {
+  color: #d4a373;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Butonul de Create Account cu Gradient */
+.createBtn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(90deg, #c59d71 0%, #f7cad0 100%);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(197, 157, 113, 0.2);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.createBtn:hover {
+  opacity: 0.95;
+}
+
+.createBtn:active {
+  transform: scale(0.98);
+}
+
+/* Divider "or sign up with" */
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #f0f0f0;
+}
+
+.divider span {
+  background: white;
+  padding: 0 15px;
+  color: #b0b0b0;
+  font-size: 11px;
+  position: relative;
+}
+
+/* Butoane Sociale */
+.socialButtons {
+  display: flex;
+  gap: 15px;
+}
+
+.googleBtn, .appleBtn {
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.appleBtn {
+  background: #000;
+  color: white;
+  border: none;
+}
+
+.appleIcon {
+  filter: invert(1);
+}
+
+/* Link-ul de jos către Sign In */
+.footerText {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #8e8e8e;
+}
+
+.footerText a {
+  color: #d4a373;
+  font-weight: 700;
+  text-decoration: none;
+}

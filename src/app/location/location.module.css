@@ -1,0 +1,359 @@
+.fullPageContainer {
+  min-height: 100vh;
+  width: 100%;
+  /* DEGRADE ELEGANT: De la roz pal la crem/nude */
+  background: linear-gradient(135deg, #fff5f7 0%, #fdf2e9 50%, #f9f0ec 100%);
+  display: flex;
+  flex-direction: column;
+  color: #2d2d2d; /* Am schimbat culoarea textului în gri închis pentru contrast */
+}
+
+.topHeader {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeBtn {
+  background: white;
+  border: 1px solid #eee;
+  color: #c5a47e;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  background: #fdfaf8;
+  transform: scale(1.1);
+}
+
+.contentWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.locationCard {
+  width: 100%;
+  max-width: 500px;
+  background: white; /* Cardul devine alb pentru un aspect "curat" */
+  padding: 40px;
+  border-radius: 40px;
+  box-shadow: 0 20px 40px rgba(197, 164, 126, 0.15); /* Umbră caldă */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.mainTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.subTitle {
+  color: #8e8e8e;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.badgeIcon {
+  background: #fff1f2;
+  padding: 12px;
+  border-radius: 50%;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.infoItem {
+  display: flex;
+  gap: 20px;
+}
+
+.iconSquare {
+  width: 45px;
+  height: 45px;
+  background: #fdf2e9;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c5a47e; /* Culoarea auriu/nude pentru iconițe */
+}
+
+.label {
+  display: block;
+  color: #8e8e8e;
+  font-size: 13px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.infoText p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.scheduleGrid {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.dayLine {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+  font-size: 15px;
+  color: #555;
+}
+
+.time {
+  font-weight: 700;
+  color: #c5a47e;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 15px;
+  margin-top: 50px;
+}
+
+.btnPrimary {
+  flex: 1;
+  background: linear-gradient(90deg, #c5a47e 0%, #d4b99a 100%);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(197, 164, 126, 0.3);
+}
+
+.btnSecondary {
+  flex: 1;
+  background: white;
+  color: #c5a47e;
+  border: 2px solid #fdf2e9;
+  padding: 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnSecondary:hover {
+  background: #fdf2e9;
+}
+
+/* MODALUL - Îl facem puțin mai deschis la culoare pentru a păstra tema */
+.modalOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(45, 45, 45, 0.7); /* Overlay mai puțin opac */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(5px); /* Efect de încețoșare fundal */
+}
+
+.mapModal {
+  width: 100%;
+  max-width: 800px;
+  background: white; /* Modal alb */
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.mapHeader {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mapHeaderLeft h3 { color: #1a1a1a; }
+.mapHeaderLeft p { color: #8e8e8e; }
+.mapClose { color: #c5a47e; }
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(45, 45, 45, 0.7); /* Fundal semi-transparent */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(8px); /* Efect de sticlă mată în spate */
+}
+
+.mapModal {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.mapHeader {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mapHeaderLeft {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.mapHeaderLeft h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.mapHeaderLeft p {
+  margin: 2px 0 0 0;
+  font-size: 13px;
+  color: #8e8e8e;
+}
+
+.mapClose {
+  background: #f5f5f5;
+  border: none;
+  color: #333;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mapClose:hover {
+  background: #eeeeee;
+}
+
+.mapIframeContainer {
+  height: 400px;
+  width: 100%;
+  position: relative;
+  background: #f9f9f9;
+}
+
+.floatingOpenBtn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: white;
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.mapFooter {
+  background: white;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+}
+
+.footerInfo h4 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.footerInfo p {
+  margin: 4px 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.footerPhone {
+  color: #c5a47e !important;
+  font-weight: 600;
+  margin-top: 6px !important;
+}
+
+.footerDirectionsBtn {
+  background: #c5a47e;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(197, 164, 126, 0.3);
+  transition: transform 0.2s;
+}
+
+.footerDirectionsBtn:hover {
+  transform: translateY(-2px);
+}
