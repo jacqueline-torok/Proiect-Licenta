@@ -18,21 +18,49 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
+      // 1. Autentificarea cu email și parolă
       const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
+        email: email.trim(),
         password: password,
       });
 
       if (error) {
         alert("Eroare la autentificare: " + error.message);
         setLoading(false);
-      } else if (data.user) {
+        return;
+      }
+
+      if (data.user) {
+        // 2. Interogăm tabelul 'profile' pentru a afla rolul utilizatorului logat
+        const { data: profile, error: profileError } = await supabase
+          .from('profile')
+          .select('role')
+          .eq('email', data.user.email) // Căutăm profilul după email-ul utilizatorului
+          .single();
+
+        if (profileError) {
+          // Am eliminat console.error-ul problematic pentru a trece de regulile stricte Next.js
+          setLoading(false);
+          // Dacă nu găsim profilul, redirecționăm implicit către servicii
+          router.push('/services');
+          return;
+        }
+
+        // 3. Redirecționare condiționată în funcție de rol
         router.refresh(); 
-        // Redirecționare către pagina de servicii/booking
-        router.push('/services'); 
+        
+        if (profile?.role === 'admin') {
+          // Dacă este admin, merge la dashboard-ul de administrare
+          router.push('/admin');
+        } else {
+          // Dacă este user normal, merge la pagina de servicii/booking
+          router.push('/services');
+        }
       }
     } catch (err) {
       alert("A apărut o eroare neașteptată.");
+    } finally {
+      // Se asigură că loading-ul se oprește în siguranță indiferent de scenariu
       setLoading(false);
     }
   };

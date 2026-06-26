@@ -1,11 +1,10 @@
 .fullPageContainer {
   min-height: 100vh;
   width: 100%;
-  /* DEGRADE ELEGANT: De la roz pal la crem/nude */
   background: linear-gradient(135deg, #fff5f7 0%, #fdf2e9 50%, #f9f0ec 100%);
   display: flex;
   flex-direction: column;
-  color: #2d2d2d; /* Am schimbat culoarea textului în gri închis pentru contrast */
+  color: #2d2d2d; 
 }
 
 .topHeader {
@@ -45,10 +44,10 @@
 .locationCard {
   width: 100%;
   max-width: 500px;
-  background: white; /* Cardul devine alb pentru un aspect "curat" */
+  background: white; 
   padding: 40px;
   border-radius: 40px;
-  box-shadow: 0 20px 40px rgba(197, 164, 126, 0.15); /* Umbră caldă */
+  box-shadow: 0 20px 40px rgba(197, 164, 126, 0.15); 
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
@@ -97,7 +96,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #c5a47e; /* Culoarea auriu/nude pentru iconițe */
+  color: #c5a47e; 
 }
 
 .label {
@@ -180,23 +179,22 @@
   background: #fdf2e9;
 }
 
-/* MODALUL - Îl facem puțin mai deschis la culoare pentru a păstra tema */
 .modalOverlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(45, 45, 45, 0.7); /* Overlay mai puțin opac */
+  background: rgba(45, 45, 45, 0.7); 
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   padding: 20px;
-  backdrop-filter: blur(5px); /* Efect de încețoșare fundal */
+  backdrop-filter: blur(5px); 
 }
 
 .mapModal {
   width: 100%;
   max-width: 800px;
-  background: white; /* Modal alb */
+  background: white;
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
@@ -220,13 +218,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(45, 45, 45, 0.7); /* Fundal semi-transparent */
+  background: rgba(45, 45, 45, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   padding: 20px;
-  backdrop-filter: blur(8px); /* Efect de sticlă mată în spate */
+  backdrop-filter: blur(8px); 
 }
 
 .mapModal {

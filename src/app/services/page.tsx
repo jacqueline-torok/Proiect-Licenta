@@ -1,7 +1,7 @@
 "use client";
 
 import Image from 'next/image';
-import Link from 'next/link'; // Adăugat Link
+import Link from 'next/link'; 
 import { useRouter } from 'next/navigation';
 import { Star, Clock, Home as HomeIcon, User, MapPin } from 'lucide-react';
 import styles from './services.module.css';

@@ -15,6 +15,11 @@ export default function ProfilePage() {
   const [showMembershipModal, setShowMembershipModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [selectedApt, setSelectedApt] = useState<any>(null);
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+  const [comment, setComment] = useState('');
 
   const [userData, setUserData] = useState({
     name: "", 
@@ -58,6 +63,7 @@ export default function ProfilePage() {
       try {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) { router.push('/login'); return; }
+        
         const { data: profile } = await supabase.from('profile').select('*').eq('email', user.email).maybeSingle();
         if (profile) {
           setUserData({
@@ -70,12 +76,53 @@ export default function ProfilePage() {
             totalSpent: profile.points || 0
           });
         }
-        const { data: apts } = await supabase.from('appointments').select('*').eq('user_email', user.email).order('appointment_date', { ascending: true }).limit(2);
+
+        const { data: apts } = await supabase
+          .from('appointments')
+          .select('*')
+          .eq('user_email', user.email)
+          .order('appointment_date', { ascending: false });
+        
         if (apts) setAppointments(apts);
+      } catch (err) {
       } finally { setLoading(false); }
     }
     getData();
   }, [router]);
+
+  const handleSubmitReview = async () => {
+    if (rating === 0) return alert("Selectează o notă!");
+    try {
+      const { error: reviewError } = await supabase.from('reviews').insert([{
+        user_email: userData.email,
+        rating: rating,
+        comment: comment,
+        service_name: selectedApt.service_name,
+        created_at: new Date()
+      }]);
+
+      if (reviewError) throw reviewError;
+
+      const { error: aptError } = await supabase
+        .from('appointments')
+        .update({ reviewed: true })
+        .eq('id', selectedApt.id);
+
+      if (aptError) throw aptError;
+
+      setAppointments(prev => 
+        prev.map(a => a.id === selectedApt.id ? { ...a, reviewed: true } : a)
+      );
+      
+      setShowReviewModal(false);
+      setRating(0);
+      setComment('');
+      setShowSuccessToast(true);
+      setTimeout(() => setShowSuccessToast(false), 3000);
+    } catch (e: any) { 
+      alert("Eroare la trimiterea feedback-ului: " + e.message); 
+    }
+  };
 
   const handleSaveUpdate = async () => {
     try {
@@ -99,7 +146,7 @@ export default function ProfilePage() {
 
   return (
     <div className={styles.container}>
-      {showSuccessToast && <div className={styles.toast}><CheckCircle2 size={18} /> Profile updated</div>}
+      {showSuccessToast && <div className={styles.toast}><CheckCircle2 size={18} /> Success!</div>}
 
       <nav className={styles.nav}>
         <button onClick={() => router.back()} className={styles.navBtn}>←</button>
@@ -166,17 +213,84 @@ export default function ProfilePage() {
 
         <section className={styles.section}>
           <div className={styles.secHeader}><h3>Visits</h3><Calendar size={18} color="#888" /></div>
-          {appointments.map(apt => (
-            <div key={apt.id} className={styles.aptRow}>
-              <div className={styles.aptDate}><span>{new Date(apt.appointment_date).getDate()}</span></div>
-              <div className={styles.aptDetails}><h4>{apt.service_name}</h4><p>{apt.appointment_time}</p></div>
-              <div className={styles.aptStatus}>{apt.status}</div>
-            </div>
-          ))}
+          <div className={styles.appointmentsWrapper}>
+            {appointments.length > 0 ? appointments.map(apt => (
+              <div key={apt.id} className={styles.aptRow}>
+                <div className={styles.aptDate}>
+                  <span>{new Date(apt.appointment_date).getDate()}</span>
+                </div>
+                <div className={styles.aptDetails}>
+                  <h4>{apt.service_name}</h4>
+                  <p>{apt.appointment_time || apt.apoiment_time}</p>
+                </div>
+                
+                <div className={styles.aptStatusArea}>
+                  {apt.status === 'completed' ? (
+                    apt.reviewed ? (
+                      <div className={styles.aptStatus} style={{ color: '#c59d71', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <CheckCircle2 size={14} /> Rated
+                      </div>
+                    ) : (
+                      <button 
+                        className={styles.reviewBtn}
+                        onClick={() => { setSelectedApt(apt); setShowReviewModal(true); }}
+                      >
+                        <Star size={14} fill="currentColor" /> Rate
+                      </button>
+                    )
+                  ) : (
+                    <div className={styles.aptStatus}>{apt.status || 'Upcoming'}</div>
+                  )}
+                </div>
+              </div>
+            )) : (
+              <p style={{textAlign: 'center', padding: '20px', color: '#999'}}>No visits found.</p>
+            )}
+          </div>
         </section>
       </main>
 
-      {/* MODAL EDITARE PROFIL - ACTUALIZAT */}
+      {/* --- MODAL PENTRU RATING --- */}
+      {showReviewModal && (
+        <div className={styles.overlay} onClick={() => setShowReviewModal(false)}>
+          <div className={styles.modal} onClick={e => e.stopPropagation()}>
+            <div className={styles.modalHead}>
+              <h3>Rate Service</h3>
+              <button onClick={() => setShowReviewModal(false)}><X /></button>
+            </div>
+            <div className={styles.reviewBody}>
+              <p>Cum a fost vizita pentru <strong>{selectedApt?.service_name}</strong>?</p>
+              <div className={styles.starsContainer} style={{ display: 'flex', justifyContent: 'center', gap: '10px', margin: '20px 0' }}>
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    onClick={() => setRating(star)}
+                    onMouseEnter={() => setHover(star)}
+                    onMouseLeave={() => setHover(0)}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                  >
+                    <Star 
+                      size={32} 
+                      fill={(hover || rating) >= star ? "#c59d71" : "transparent"} 
+                      color={(hover || rating) >= star ? "#c59d71" : "#ddd"} 
+                    />
+                  </button>
+                ))}
+              </div>
+              <textarea 
+                placeholder="Spune-ne părerea ta despre acest serviciu..." 
+                className={styles.reviewInput}
+                style={{ width: '100%', minHeight: '100px', padding: '12px', borderRadius: '8px', border: '1px solid #ddd', marginBottom: '15px' }}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+              <button className={styles.saveBtn} onClick={handleSubmitReview}>Submit Review</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL EDITARE PROFIL */}
       {isEditing && (
         <div className={styles.overlay} onClick={() => setIsEditing(false)}>
           <div className={styles.modal} onClick={e => e.stopPropagation()}>
@@ -195,11 +309,11 @@ export default function ProfilePage() {
               </div>
               <div className={styles.inputGroup}>
                 <label><Phone size={16} /> Phone Number</label>
-                <input type="tel" placeholder="(555) 000-0000" value={userData.phone} onChange={e => setUserData({...userData, phone: e.target.value})} />
+                <input type="tel" value={userData.phone} onChange={e => setUserData({...userData, phone: e.target.value})} />
               </div>
               <div className={styles.inputGroup}>
                 <label><MapPin size={16} /> Address</label>
-                <input type="text" placeholder="Street, City, Country" value={userData.address} onChange={e => setUserData({...userData, address: e.target.value})} />
+                <input type="text" value={userData.address} onChange={e => setUserData({...userData, address: e.target.value})} />
               </div>
               <div className={styles.inputGroup}>
                 <label><Calendar size={16} /> Birthday</label>
@@ -211,18 +325,51 @@ export default function ProfilePage() {
         </div>
       )}
 
-      {/* MODAL MEMBERSHIP */}
+      {/* ==========================================================================
+         MODAL MEMBERSHIP RESTRUCTURAT ȘI CORIJAT PENTRU ALINIERE PREMIUM
+         ========================================================================== */}
       {showMembershipModal && (
-        <div className={styles.overlay} onClick={() => setShowMembershipModal(false)}>
-          <div className={styles.modal} onClick={e => e.stopPropagation()}>
-            <div className={styles.modalHead}><h3>Membership</h3><button onClick={() => setShowMembershipModal(false)}><X /></button></div>
-            <div className={styles.howBox}><h4>How it works</h4><p>1$ spent = 1 Loyalty Point. Unlock tiers for luxury rewards.</p></div>
-            <div className={styles.tierList}>
-              <div className={styles.tItem}><div className={styles.tIcon} style={{background:'#a87c51'}}><Award size={16}/></div><div><h5>Bronze</h5><p>0-499 points</p></div></div>
-              <div className={styles.tItem}><div className={styles.tIcon} style={{background:'#bdc3c7'}}><Award size={16}/></div><div><h5>Silver</h5><p>500-1499 points</p></div></div>
-              <div className={styles.tItem}><div className={styles.tIcon} style={{background:'#d4af37'}}><Award size={16}/></div><div><h5>Gold</h5><p>1500+ points</p></div></div>
+        <div className={styles.modalOverlay} onClick={() => setShowMembershipModal(false)}>
+          <div className={styles.membershipCard} onClick={e => e.stopPropagation()}>
+            <button className={styles.closeModalBtn} onClick={() => setShowMembershipModal(false)}><X size={20} /></button>
+            
+            <header className={styles.modalHeader}>
+              <h2 className={styles.modalTitle}>Membership Tiers</h2>
+              <p className={styles.modalSubtitle}>Earn 1 point for every $1 spent at Bella Beauty</p>
+            </header>
+
+            <div className={styles.tiersContainer}>
+              {/* Bronze */}
+              <div className={`${styles.tierRow} ${styles.bronzeTier}`}>
+                <div className={styles.tierBadge} style={{ color: '#a87c51' }}><Award size={22} fill="currentColor" /></div>
+                <div className={styles.tierInfo}>
+                  <h3>Bronze Member</h3>
+                  <span>0 - 499 points</span>
+                </div>
+              </div>
+
+              {/* Silver */}
+              <div className={`${styles.tierRow} ${styles.silverTier}`}>
+                <div className={styles.tierBadge} style={{ color: '#bdc3c7' }}><Award size={22} fill="currentColor" /></div>
+                <div className={styles.tierInfo}>
+                  <h3>Silver Member</h3>
+                  <span>500 - 1499 points</span>
+                </div>
+              </div>
+
+              {/* Gold */}
+              <div className={`${styles.tierRow} ${styles.goldTier}`}>
+                <div className={styles.tierBadge} style={{ color: '#d4af37' }}><Trophy size={22} fill="currentColor" /></div>
+                <div className={styles.tierInfo}>
+                  <h3>Gold Member</h3>
+                  <span>1500+ points</span>
+                </div>
+              </div>
             </div>
-            <button className={styles.saveBtn} onClick={() => setShowMembershipModal(false)}>Got it!</button>
+
+            <button className={styles.gotItBtn} onClick={() => setShowMembershipModal(false)}>
+              Got it!
+            </button>
           </div>
         </div>
       )}

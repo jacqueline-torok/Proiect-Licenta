@@ -93,11 +93,11 @@
   display: flex;
   gap: 16px;
   justify-content: center;
-  margin-bottom: 40px; /* Spațiu până la carduri */
+  margin-bottom: 40px; 
 }
 
 .signInBtn {
-  background: #c5a47e; /* Auriul tău */
+  background: #c5a47e; 
   color: white;
   padding: 12px 28px;
   border-radius: 14px;
