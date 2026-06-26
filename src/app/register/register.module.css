@@ -9,7 +9,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Secțiunea de Logo/Titlu de sus */
 .logoSection {
   text-align: center;
   margin-bottom: 25px;
@@ -41,7 +40,6 @@
   font-size: 14px;
 }
 
-/* Cardul Alb Principal */
 .registerCard {
   background: white;
   width: 100%;
@@ -51,7 +49,6 @@
   box-shadow: 0 20px 50px rgba(0,0,0,0.04);
 }
 
-/* Bannerul Roz pentru Rewards */
 .rewardsBanner {
   background-color: #fff1f2;
   border: 1px solid #ffe4e6;
@@ -81,7 +78,6 @@
   line-height: 1.4;
 }
 
-/* Stiluri Formular */
 .form {
   display: flex;
   flex-direction: column;
@@ -142,7 +138,6 @@
   margin-top: 2px;
 }
 
-/* Termeni și Condiții */
 .terms {
   display: flex;
   align-items: flex-start;
@@ -170,7 +165,6 @@
   cursor: pointer;
 }
 
-/* Butonul de Create Account cu Gradient */
 .createBtn {
   width: 100%;
   padding: 18px;
@@ -193,7 +187,6 @@
   transform: scale(0.98);
 }
 
-/* Divider "or sign up with" */
 .divider {
   position: relative;
   text-align: center;
@@ -218,7 +211,6 @@
   position: relative;
 }
 
-/* Butoane Sociale */
 .socialButtons {
   display: flex;
   gap: 15px;
@@ -250,7 +242,6 @@
   filter: invert(1);
 }
 
-/* Link-ul de jos către Sign In */
 .footerText {
   text-align: center;
   margin-top: 30px;

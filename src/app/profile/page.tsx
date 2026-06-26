@@ -15,8 +15,6 @@ export default function ProfilePage() {
   const [showMembershipModal, setShowMembershipModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
-
-  // --- STĂRI PENTRU RATING ---
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [selectedApt, setSelectedApt] = useState<any>(null);
   const [rating, setRating] = useState(0);
@@ -87,14 +85,11 @@ export default function ProfilePage() {
         
         if (apts) setAppointments(apts);
       } catch (err) {
-        // Comentat pentru a preveni erori stricte de linting la build
-        // console.error("Error fetching data:", err);
       } finally { setLoading(false); }
     }
     getData();
   }, [router]);
 
-  // --- TRIMITERE RATING ---
   const handleSubmitReview = async () => {
     if (rating === 0) return alert("Selectează o notă!");
     try {

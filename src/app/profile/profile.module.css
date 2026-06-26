@@ -1,4 +1,3 @@
-/* --- LAYOUT PRINCIPAL --- */
 .container { 
     background: #fdfaf8; 
     min-height: 100vh; 
@@ -38,7 +37,6 @@
     box-sizing: border-box; 
 }
 
-/* --- IDENTITY / HERO --- */
 .hero { text-align: center; margin-bottom: 30px; }
 .avatarBox { position: relative; width: 85px; margin: 0 auto 15px; }
 
@@ -72,7 +70,6 @@
 }
 .userEmail { color: #999; font-size: 0.85rem; margin-top: 4px; }
 
-/* --- MEMBERSHIP CARD --- */
 .loyaltyCard { 
     border-radius: 28px; padding: 25px; position: relative; 
     overflow: hidden; margin-bottom: 25px; 
@@ -107,7 +104,6 @@
 .ratio { color: #c5a47e; }
 .bgTrophy { position: absolute; right: -20px; bottom: -15px; opacity: 0.12; color: #000; transform: rotate(15deg); }
 
-/* --- TRACKER & PROGRESS --- */
 .trackerBox { background: white; padding: 22px; border-radius: 26px; border: 1px solid #f6eeee; margin-bottom: 30px; }
 .trackerText { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; margin-bottom: 22px; }
 .accentText { color: #c5a47e; }
@@ -124,7 +120,6 @@
 }
 .dotOn { background: #c5a47e; border-color: white; color: white; }
 
-/* --- FAVORITES GRID --- */
 .section { margin-bottom: 35px; }
 .secHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
 .secHeader h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 0; }
@@ -148,7 +143,6 @@
 }
 .bookBtn:hover { background: #c5a47e; }
 
-/* --- VISITS --- */
 .aptRow {
     background: white; padding: 15px; border-radius: 20px;
     display: flex; align-items: center; gap: 15px;
@@ -166,7 +160,6 @@
 .aptDetails p { margin: 2px 0 0; font-size: 0.75rem; color: #888; }
 .aptStatus { margin-left: auto; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: #27ae60; background: #ebf9f1; padding: 4px 10px; border-radius: 10px; }
 
-/* --- MODALS --- */
 .overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px);
@@ -195,7 +188,6 @@
 .saveBtn:hover { background-color: #c5a47e; }
 
 .loader { display: flex; align-items: center; justify-content: center; height: 100vh; color: #c5a47e; }
-/* Butonul "Rate" din lista de vizite */
 .reviewBtn {
   background: #c59d71;
   color: white;
@@ -217,7 +209,6 @@
   box-shadow: 0 4px 10px rgba(197, 157, 113, 0.2);
 }
 
-/* Stiluri pentru Modalul de Feedback */
 .reviewBody {
   padding: 20px 0;
   display: flex;
@@ -261,14 +252,12 @@
   border-color: #c59d71;
 }
 
-/* Aliniere pentru coloana de status/rating în rândul de vizite */
 .aptStatusArea {
   min-width: 100px;
   display: flex;
   justify-content: flex-end;
 }
 
-/* Centrarea stelelor */
 .starsContainer {
   display: flex;
   justify-content: center;
@@ -288,7 +277,6 @@
   transform: scale(1.2);
 }
 
-/* Stilizare căsuță feedback */
 .reviewInput {
   width: 100%;
   min-height: 120px;
@@ -308,7 +296,6 @@
   border-color: #c59d71;
 }
 
-/* Corpul modalului de review */
 .reviewBody {
   display: flex;
   flex-direction: column;
@@ -321,11 +308,6 @@
   font-size: 1rem;
 }
 
-/* ==========================================================================
-   STILUIRE PREMIUM PENTRU FERESTRA MODALĂ MEMBERSHIP (BELLA BEAUTY)
-   ========================================================================== */
-
-/* Fundalul estompat din spatele pop-up-ului */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -333,14 +315,13 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px); /* Efect sticlă mată în fundal */
+  backdrop-filter: blur(4px); 
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1100;
 }
 
-/* Cardul alb central */
 .membershipCard {
   background: #ffffff;
   width: 90%;
@@ -352,7 +333,6 @@
   text-align: center;
 }
 
-/* Butonul X din colț */
 .closeModalBtn {
   position: absolute;
   top: 18px;
@@ -371,7 +351,6 @@
   color: #1e293b;
 }
 
-/* Zonă Header pop-up */
 .modalHeader {
   margin-bottom: 24px;
 }
@@ -390,7 +369,6 @@
   line-height: 1.4;
 }
 
-/* Listă rânduri carduri medalie */
 .tiersContainer {
   display: flex;
   flex-direction: column;
@@ -398,7 +376,6 @@
   margin-bottom: 24px;
 }
 
-/* Rândurile Flexbox orizontale pentru fiecare medalie */
 .tierRow {
   display: flex;
   align-items: center;
@@ -415,12 +392,10 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
-/* Fundaluri discret nuanțate pe metale */
 .bronzeTier { background: #faf5f0; border-color: #ede0d4; }
 .silverTier { background: #f8fafc; border-color: #e2e8f0; }
 .goldTier { background: #fdfaf2; border-color: #f7eec8; }
 
-/* Caseta albă din interiorul rândului pentru pictograma Lucide */
 .tierBadge {
   width: 44px;
   height: 44px;
@@ -430,10 +405,9 @@
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-  flex-shrink: 0; /* Împiedică deformarea iconiței pe ecrane mici */
+  flex-shrink: 0; 
 }
 
-/* Textul din dreptul medaliilor */
 .tierInfo h3 {
   font-size: 0.95rem;
   color: #1e293b;
@@ -446,7 +420,6 @@
   color: #64748b;
 }
 
-/* Butonul mare de confirmare 'Got it!' */
 .gotItBtn {
   width: 100%;
   background: #1e293b;
@@ -464,9 +437,6 @@
   background: #0f172a;
 }
 
-/* ==========================================================================
-   STRATUL DE FUNDAL PENTRU MODALE (OVERLAY)
-   ========================================================================== */
 .overlay, .modalOverlay {
   position: fixed;
   top: 0;
@@ -474,7 +444,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px); /* Efect modern de sticlă mată */
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -482,7 +452,6 @@
   animation: fadeIn 0.2s ease-out;
 }
 
-/* CONTAINERUL CENTRAL (CARDUL MODALULUI) */
 .modal, .membershipCard {
   background: #ffffff;
   width: 90%;
@@ -496,7 +465,6 @@
   animation: scaleUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* HEADER-UL MODALULUI (TITLU ȘI BUTON ÎNCHIDERE) */
 .modalHead, .modalHeader {
   display: flex;
   justify-content: space-between;
@@ -519,7 +487,6 @@
   text-align: left;
 }
 
-/* Butonul X din colț */
 .modalHead button, .closeModalBtn {
   background: none;
   border: none;
@@ -537,9 +504,6 @@
   transform: scale(1.1);
 }
 
-/* ==========================================================================
-   SECȚIUNEA 1: MODALUL DE MEMBERSHIP (FIDELITATE)
-   ========================================================================== */
 .tierList, .tiersContainer {
   display: flex;
   flex-direction: column;
@@ -547,7 +511,6 @@
   margin-bottom: 24px;
 }
 
-/* Rândurile orizontale pentru fiecare nivel de membru */
 .tItem, .tierRow {
   display: flex;
   align-items: center;
@@ -564,19 +527,17 @@
   transform: translateY(-2px);
 }
 
-/* Fundaluri calde, discrete în funcție de metal */
 .bronzeTier { background: #faf5f0; border-color: #ede0d4; }
 .silverTier { background: #f8fafc; border-color: #e2e8f0; }
 .goldTier { background: #fdfaf2; border-color: #f7eec8; }
 
-/* Caseta pentru iconiță/medalie */
 .tIcon, .tierBadge {
   width: 44px;
   height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff !important; /* Forțăm fundal alb curat în interiorul medaliei */
+  background: #ffffff !important; 
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   flex-shrink: 0;
@@ -595,9 +556,6 @@
   margin: 0;
 }
 
-/* ==========================================================================
-   SECȚIUNEA 2: MODALUL DE EDITARE PROFIL (FORMULAR)
-   ========================================================================== */
 .form {
   display: flex;
   flex-direction: column;
@@ -605,7 +563,6 @@
   text-align: left;
 }
 
-/* Grupurile de input-uri (Label + Căsuță) */
 .inputGroup {
   display: flex;
   flex-direction: column;
@@ -623,7 +580,6 @@
   gap: 6px;
 }
 
-/* Căsuțele de text din formular (Inputs) */
 .inputGroup input {
   width: 100%;
   padding: 12px 16px;
@@ -638,14 +594,11 @@
 
 .inputGroup input:focus {
   outline: none;
-  border-color: #c5a47e; /* Culoarea aurie Bella Beauty la focus */
+  border-color: #c5a47e; 
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(197, 164, 126, 0.15);
 }
 
-/* ==========================================================================
-   BUTOANELE DE SALVARE ȘI ACȚIUNE
-   ========================================================================== */
 .saveBtn, .gotItBtn {
   width: 100%;
   background: #1e293b;
@@ -671,9 +624,6 @@
   transform: scale(0.98);
 }
 
-/* ==========================================================================
-   ANIMAȚII FINE
-   ========================================================================== */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -684,16 +634,13 @@
   to { transform: scale(1); opacity: 1; }
 }
 
-/* ==========================================================================
-   STILIZARE PREMIUM BUTON INFO (CARD LOIALITATE)
-   ========================================================================== */
 .infoBtn {
-  background: rgba(197, 164, 126, 0.1); /* Fundal auriu ultra-discret, translucid */
-  border: 1px solid rgba(197, 164, 126, 0.3); /* Contur fin asortat cu textul */
-  color: #c5a47e; /* Culoarea aurie nativă Bella Beauty pentru iconiță */
+  background: rgba(197, 164, 126, 0.1); 
+  border: 1px solid rgba(197, 164, 126, 0.3); 
+  color: #c5a47e; 
   width: 36px;
   height: 36px;
-  border-radius: 50%; /* Îl transformă într-un cerc perfect */
+  border-radius: 50%; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -703,24 +650,17 @@
   outline: none;
 }
 
-/* Efect de interacțiune când utilizatorul trece cu mouse-ul peste el */
 .infoBtn:hover {
-  background: #c5a47e; /* Se umple complet cu auriu */
-  color: #ffffff; /* Iconița devine albă pentru un contrast perfect */
-  transform: scale(1.08); /* Crește fff puțin în dimensiune (efect pop) */
-  box-shadow: 0 4px 12px rgba(197, 164, 126, 0.25); /* Umbră fină aurie */
+  background: #c5a47e; 
+  color: #ffffff; 
+  transform: scale(1.08); 
+  box-shadow: 0 4px 12px rgba(197, 164, 126, 0.25); 
 }
 
-/* Efect de apăsare (click) */
 .infoBtn:active {
   transform: scale(0.95);
 }
 
-/* ==========================================================================
-   PALETĂ PREMIUM DE CULORI PENTRU CARDURILE MEMBRU (TIERS)
-   ========================================================================== */
-
-/* --- GENERAL (Aliniere și Margini) --- */
 .tierRow, .tItem {
   display: flex;
   align-items: center;
@@ -730,72 +670,62 @@
   box-sizing: border-box;
 }
 
-/* --- BRONZE TIER (Cupru/Maro Soft) --- */
 .bronzeTier, .tItem:nth-child(1) { 
-  background: #fdf5ef !important; /* Bej/Nude foarte fin */
+  background: #fdf5ef !important; 
   border: 1px solid #e9d5c5 !important; 
 }
 .bronzeTier h3, .tItem:nth-child(1) h5 {
-  color: #6d4c41 !important; /* Maro ciocolatiu elegant */
+  color: #6d4c41 !important; 
   font-weight: 700 !important;
 }
 .bronzeTier span, .tItem:nth-child(1) p {
-  color: #8d6e63 !important; /* Maro deschis cald */
+  color: #8d6e63 !important; 
 }
 
-/* --- SILVER TIER (Menta/Argintiu Pastelat Modern) --- */
 .silverTier, .tItem:nth-child(2) { 
-  background: #f0f4f8 !important; /* Albastru-Argintiu înghețat, foarte curat */
+  background: #f0f4f8 !important; 
   border: 1px solid #dbe2e9 !important; 
 }
 .silverTier h3, .tItem:nth-child(2) h5 {
-  color: #334155 !important; /* Ardezie/Slate închis, intens */
+  color: #334155 !important; 
   font-weight: 700 !important;
 }
 .silverTier span, .tItem:nth-child(2) p {
-  color: #475569 !important; /* Slate mediu */
+  color: #475569 !important; 
 }
 
-/* --- GOLD TIER (Șampanie/Auriu Luxos) --- */
 .goldTier, .tItem:nth-child(3) { 
-  background: #fcf6e5 !important; /* Crem Șampanie extrem de fin */
+  background: #fcf6e5 !important; 
   border: 1px solid #f2e3be !important; 
 }
 .goldTier h3, .tItem:nth-child(3) h5 {
-  color: #785913 !important; /* Auriu/Chihlimbar regal închis */
+  color: #785913 !important; 
   font-weight: 700 !important;
 }
 .goldTier span, .tItem:nth-child(3) p {
-  color: #947119 !important; /* Miere/Auriu saturat */
+  color: #947119 !important; 
 }
 
-/* --- CASETA DIN INTERIORUL CARDULUI PENTRU MEDALIE --- */
 .tierBadge, .tIcon {
   background: #ffffff !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03) !important;
   border: 1px solid rgba(0, 0, 0, 0.04) !important;
 }
-/* ==========================================================================
-   ETICHETA TEXT DE PE CARDUL MARE (BRONZE / SILVER / GOLD MEMBER)
-   ========================================================================== */
 .tierTag {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   
-  /* Fundal alb semi-transparent care decupează eticheta pe orice culoare de card */
   background: rgba(255, 255, 255, 0.85) !important; 
   
-  /* Text închis la culoare pentru contrast maxim */
   color: #1e293b !important; 
   
-  /* Stil și rotunjire elegantă, tip pastilă */
   padding: 6px 14px !important;
   border-radius: 20px !important;
   font-size: 0.85rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  text-transform: uppercase; /* Face scrisul cu litere mari, foarte profesionist */
+  text-transform: uppercase;
   margin-top: 8px;
 }

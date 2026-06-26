@@ -16,7 +16,6 @@ import styles from './admin.module.css';
 export default function AdminPage() {
   const router = useRouter();
   
-  // --- STĂRI DE SECURITATE ---
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [checkingAccess, setCheckingAccess] = useState<boolean>(true);
 
@@ -33,7 +32,6 @@ export default function AdminPage() {
   const [realPopularServices, setRealPopularServices] = useState<any[]>([]);
   const [realRevenueTrend, setRealRevenueTrend] = useState<any[]>([]);
 
-  // --- EFFECT 1: VERIFICARE STRICTĂ ROL ADMIN ---
   useEffect(() => {
     const verifyAdmin = async () => {
       try {
@@ -44,7 +42,6 @@ export default function AdminPage() {
           return;
         }
 
-        // Citim coloana 'role' din tabela profile pentru user-ul curent
         const { data: profile, error } = await supabase
           .from('profile')
           .select('role')
@@ -57,9 +54,7 @@ export default function AdminPage() {
           return;
         }
 
-        // Dacă a trecut de verificare, îi permitem accesul
         setIsAdmin(true);
-        // Încărcăm datele abia după ce știm sigur că este Admin
         fetchAdminData();
       } catch (err) {
         router.push('/');
@@ -176,7 +171,6 @@ export default function AdminPage() {
     return d.getDate() === selectedDate.getDate() && d.getMonth() === selectedDate.getMonth() && d.getFullYear() === selectedDate.getFullYear();
   }).sort((a,b) => (a.appointment_time || "").localeCompare(b.appointment_time || ""));
 
-  // --- BARIERĂ VIZUALĂ: Împiedică randarea elementelor dacă userul nu este verificat ca admin ---
   if (checkingAccess) {
     return <div className={styles.loader}>Securing connection...</div>;
   }

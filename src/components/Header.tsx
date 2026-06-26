@@ -18,7 +18,7 @@ export default function Header() {
         const { data: profile } = await supabase
           .from('profile')
           .select('full_name')
-          .eq('email', user.email) // Acum TypeScript știe sigur că email-ul există
+          .eq('email', user.email) 
           .maybeSingle();
         
         setUserName(profile?.full_name || user.email.split('@')[0]);

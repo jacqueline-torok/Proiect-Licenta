@@ -8,12 +8,11 @@ import styles from '../book.module.css';
 
 export default function ChooseTimePage() {
   const router = useRouter();
-  const { id } = useParams(); // Preluat ca string din URL (ex: "1")
+  const { id } = useParams(); 
   const searchParams = useSearchParams();
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [isBooking, setIsBooking] = useState(false);
 
-  // --- STARE PENTRU ORELE DEJA REZERVATE ---
   const [occupiedHours, setOccupiedHours] = useState<string[]>([]);
 
   const dateParam = searchParams.get('date');
@@ -26,8 +25,6 @@ export default function ChooseTimePage() {
       })
     : "Select a date";
 
-  // --- DETERMINAREA DINAMICĂ A PROGRAMULUI (După orarul Bella Beauty) ---
-  // 0 = Duminică, 1 = Luni, ..., 6 = Sâmbătă
   const selectedDayOfWeek = dateParam ? new Date(dateParam).getDay() : 1;
 
   let timeSlots = {
@@ -36,16 +33,13 @@ export default function ChooseTimePage() {
     evening: ["18:00", "18:30", "19:00"]
   };
 
-  // Modificăm structura de sloturi în funcție de zi
   if (selectedDayOfWeek === 6) {
-    // SÂMBĂTĂ: 9:00 AM - 7:00 PM (Ultimul slot începe la 18:30)
     timeSlots = {
       morning: ["09:00", "09:30", "10:00", "11:30"],
       afternoon: ["13:00", "14:30", "15:00", "16:30"],
       evening: ["18:00", "18:30"]
     };
   } else if (selectedDayOfWeek === 0) {
-    // DUMINICĂ: 10:00 AM - 6:00 PM (Ultimul slot începe înainte de 18:00)
     timeSlots = {
       morning: ["10:00", "10:30", "11:30"],
       afternoon: ["13:00", "14:30", "15:00", "16:30"],
@@ -53,11 +47,9 @@ export default function ChooseTimePage() {
     };
   }
 
-  // Găsim serviciul și prețul acestuia din constants
   const currentService = SERVICES.find(s => s.id === id);
   const serviceDisplayName = currentService ? currentService.title : "Salon Service";
 
-  // --- LOGICA SUPABASE: Descărcăm orele luate strict pentru acest service_id ---
   useEffect(() => {
     async function checkAvailability() {
       if (!dateParam || !id) return;

@@ -17,7 +17,6 @@ export default function SignUpPage() {
     setIsSubmitting(true);
 
     try {
-      // 1. Creăm utilizatorul în sistemul de Autentificare
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
@@ -32,7 +31,6 @@ export default function SignUpPage() {
       if (authError) throw authError;
 
       if (authData.user) {
-        // 2. Creăm rândul în tabelul 'profile' (pentru pagina de profil)
         const { error: profileError } = await supabase
           .from('profile')
           .insert([
@@ -47,12 +45,9 @@ export default function SignUpPage() {
           ]);
 
         if (profileError) {
-          // Am comentat linia pentru a trece de verificarea strictă Next.js
-          // console.error("Eroare profil:", profileError.message);
+        
         }
-        // 3. Redirecționăm direct la profil
-        // Dacă Email Confirmation e ON, va trebui să verifice mail-ul mai întâi.
-        // Dacă e OFF, va fi logat instant.
+        
         router.push('/profile');
       }
     } catch (error: any) {

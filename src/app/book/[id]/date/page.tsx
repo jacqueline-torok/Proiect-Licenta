@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { ChevronLeft, ChevronRight, ArrowLeft, Star } from 'lucide-react';
 import styles from '../book.module.css';
-// Importăm supabase
 import { supabase } from '../../../../lib/supabase';
 
 export default function ChooseDatePage() {
@@ -17,7 +16,6 @@ export default function ChooseDatePage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [fullyBookedDates, setFullyBookedDates] = useState<string[]>([]);
 
-  // --- LOGICA SUPABASE: Verificăm zilele ocupate ---
   useEffect(() => {
     async function checkAvailability() {
       const firstDay = new Date(viewDate.getFullYear(), viewDate.getMonth(), 1).toISOString();
@@ -30,8 +28,6 @@ export default function ChooseDatePage() {
         .lte('booking_date', lastDay);
 
       if (data) {
-        // Aici poți adăuga logică: dacă o zi are mai mult de X programări, o adaugi în fullyBookedDates
-        // Momentan doar pregătim terenul
         const dates = data.map(ap => ap.booking_date);
         setFullyBookedDates(dates);
       }
@@ -86,8 +82,6 @@ export default function ChooseDatePage() {
               const isPast = currentDate < today;
               const isToday = currentDate.getTime() === today.getTime();
               const isSelected = selectedDate?.getTime() === currentDate.getTime();
-              
-              // Formatăm data curentă pentru a verifica dacă e în lista de ocupate
               const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
               const isFull = fullyBookedDates.includes(dateKey);
 

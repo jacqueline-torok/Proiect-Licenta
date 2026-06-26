@@ -25,7 +25,6 @@ export default function BookServicePage() {
     checkUser();
   }, []);;
   
-  // Găsim serviciul folosind ID-ul din URL
   const service = SERVICES.find(s => s.id === params.id);
 
   if (!service) {

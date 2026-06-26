@@ -1,7 +1,7 @@
 .container {
   background-color: #fff;
   min-height: 100vh;
-  padding-bottom: 80px; /* Spațiu pentru TabBar */
+  padding-bottom: 80px; 
   font-family: 'serif', sans-serif;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .hero {
-  background-color: #fce4ec; /* Rozul pal din imagine */
+  background-color: #fce4ec; 
   margin: 20px;
   padding: 40px 20px;
   border-radius: 25px;
@@ -123,7 +123,6 @@
   font-size: 1.2rem;
 }
 
-/* Bottom Tab Bar */
 .tabBar {
   position: fixed;
   bottom: 0;
@@ -151,7 +150,6 @@
   border-radius: 15px;
 }
 
-/* Containerul pentru preț și buton pentru a le alinia frumos */
 .priceRow {
   display: flex;
   justify-content: space-between;
@@ -167,9 +165,8 @@
   color: #333;
 }
 
-/* Butonul Book restilizat */
 .selectBtnSmall {
-  background-color: #C5A47E; /* Auriul tău signature */
+  background-color: #C5A47E;
   color: white;
   border: none;
   padding: 8px 18px;
@@ -182,12 +179,11 @@
 }
 
 .selectBtnSmall:hover {
-  background-color: #b3936d; /* O nuanță mai intensă la hover */
+  background-color: #b3936d; 
   transform: translateY(-1px);
   box-shadow: 0 6px 12px rgba(197, 164, 126, 0.3);
 }
 
-/* Stil pentru butonul Exit */
 .exitBtn {
   background: transparent;
   border: 1px solid #ddd;

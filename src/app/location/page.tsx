@@ -8,10 +8,9 @@ export default function LocationPage() {
   const router = useRouter();
   const [showMap, setShowMap] = useState(false);
 
-  // Funcția care deschide Google Maps extern pentru navigație (ca în poza ta)
+  // Funcția care deschide Google Maps extern pentru navigație 
   const handleGetDirections = () => {
     const address = encodeURIComponent("123 Beauty Lane, New York, NY 10001");
-    // Link corect pentru a deschide direct ruta/navigația
     const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${address}`;
     window.open(googleMapsUrl, '_blank');
   };
